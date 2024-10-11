@@ -32,9 +32,10 @@ def parse_transaction(transaction: list):
   parsed_data = []
   for tx in transaction:
     time.sleep(5)
-    pprint(tx)
+    # pprint(dir(tx))
+    pprint(tx.transaction.signatures)
     if tx.value:
-      txn_signature = tx
+      txn_signature = tx.value.transaction
       txn_details = client.get_confirmed_transaction(txn_signature)
     else:
       print("Transaction has no value")
